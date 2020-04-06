@@ -28,13 +28,6 @@ int main(void)
 	pinMode(echo,INPUT);
 	
 	
-	
-	//Make sure the pins are off before the start of loop
-	//digitalWrite(0,LOW);
-	//digitalWrite(2,LOW);
-	//digitalWrite(3,LOW);
-	
-	
 	while(1){
 		double startTime=0;
 		double endTime=0;
@@ -55,9 +48,9 @@ int main(void)
 		digitalWrite(trigger,LOW);
 		
 			
-		while(digitalRead(echo)==LOW){
+		
+        while(digitalRead(echo)==LOW){
 			startTime=clock();
-			
 		}
 		
 		while(digitalRead(echo)==HIGH){
@@ -68,9 +61,10 @@ int main(void)
 		
 		distance= pulseDuration*17000;
 		
+        
+        //Discard out of range values
 		if(distance > 2 && distance < 350)
 			printf("The distance is: %f\n",distance);
-		
 	}
 	
 	return 0;
